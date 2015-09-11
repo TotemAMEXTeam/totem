@@ -20,13 +20,13 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	private String fifthRow[];
 	
 	//Jbuttons corresponding to each individual rows 
-    JButton first[];
-    JButton second[];
-    JButton third[];
-    JButton fourth[];
-    JButton fifth[];
+	JButton first[];
+	JButton second[];
+	JButton third[];
+	JButton fourth[];
+	JButton fifth[];
     
-    JTextArea text;
+	JTextArea text;
     
 	public Keyboard(JTextArea text, String[] firstRow, String[] secondRow, String[] thirdRow, String[] fourthRow, String[] fifthRow) {
 		super(new GridBagLayout());
@@ -42,45 +42,45 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	// Method to initialize frame component 
 	private void initWidgets() {
 
-	    first = new JButton[firstRow.length];
-	    second = new JButton[secondRow.length];
-	    third = new JButton[thirdRow.length];
-	    fourth = new JButton[fourthRow.length];
-	    fifth = new JButton[fifthRow.length];
+		first = new JButton[firstRow.length];
+		second = new JButton[secondRow.length];
+		third = new JButton[thirdRow.length];
+		fourth = new JButton[fourthRow.length];
+		fifth = new JButton[fifthRow.length];
 
-	    addKeys(this, 0, firstRow, first);
-	    addKeys(this, 1, secondRow, second);
-	    addKeys(this, 2, thirdRow, third);
-	    addKeys(this, 3, fourthRow, fourth);
-	    addKeys(this, 4, fifthRow, fifth);
+		addKeys(this, 0, firstRow, first);
+		addKeys(this, 1, secondRow, second);
+		addKeys(this, 2, thirdRow, third);
+		addKeys(this, 3, fourthRow, fourth);
+		addKeys(this, 4, fifthRow, fifth);
 
 	}
 	
 	protected void addKeys(JPanel parent, int row, String[] keys, JButton[] buttons) {
 
-	    GridBagConstraints gbc = new GridBagConstraints();
-	    gbc.gridy = row;
-	    gbc.gridx = 0;
-	    gbc.fill = GridBagConstraints.BOTH;
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridy = row;
+		gbc.gridx = 0;
+		gbc.fill = GridBagConstraints.BOTH;
 
-	    int gap = 0;
-	    for (int index = 0; index < keys.length; index++) {
-	        String key = keys[index];
-	        if ("blank".equalsIgnoreCase(key)) {
-	            gbc.gridx++;
-	        } else if ("fill".equalsIgnoreCase(key)) {
-	            gbc.gridwidth++;
-	            gap++;
-	        } else {
-	            JButton btn = new JButton(key);
-	            btn.addMouseListener(this);
-	            buttons[index] = btn;
-	            parent.add(btn, gbc);
-	            gbc.gridx += gap + 1;
-	            gbc.gridwidth = 1;
-	            gap = 0;
-	        }
-	    }
+		int gap = 0;
+		for (int index = 0; index < keys.length; index++) {
+			String key = keys[index];
+			if ("blank".equalsIgnoreCase(key)) {
+				gbc.gridx++;
+			} else if ("fill".equalsIgnoreCase(key)) {
+				gbc.gridwidth++;
+				gap++;
+			} else {
+				JButton btn = new JButton(key);
+				btn.addMouseListener(this);
+				buttons[index] = btn;
+				parent.add(btn, gbc);
+				gbc.gridx += gap + 1;
+				gbc.gridwidth = 1;
+				gap = 0;
+			}
+		}
 
 	}
 

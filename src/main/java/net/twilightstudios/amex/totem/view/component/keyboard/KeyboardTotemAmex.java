@@ -21,41 +21,40 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 	
 	Keyboard currentKeyboard;
 	
-    // No argument constructor to create frame
-    public KeyboardTotemAmex() {
-    	keyboardMin = new KeyboardMin(this, text);
+	// No argument constructor to create frame
+	public KeyboardTotemAmex() {
+		keyboardMin = new KeyboardMin(this, text);
     	keyboardMay = new KeyboardMay(this, text);
     	keyboardSp1 = new KeyboardSpecials1(this, text);
     	keyboardSp2 = new KeyboardSpecials2(this, text);
     	
-        initWidgets();
+    	initWidgets();
     }
 
-    // Method to initialize frame component 
-    private void initWidgets() {
+	// Method to initialize frame component 
+	private void initWidgets() {
 
-        setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
         
-        //Various panel for the layout 
-        JPanel jpCenter = new JPanel();
+		//Various panel for the layout 
+		JPanel jpCenter = new JPanel();
         
-        text.setPreferredSize(new Dimension(800,25));
-        text.setBorder(BorderFactory.createLineBorder(Color.gray));
+		text.setPreferredSize(new Dimension(800,25));
+		text.setBorder(BorderFactory.createLineBorder(Color.gray));
         
-        jpCenter.setLayout( new BorderLayout());
-        jpCenter.add(text, BorderLayout.WEST);
-        jpCenter.add(text, BorderLayout.CENTER);
+		jpCenter.setLayout( new BorderLayout());
+		jpCenter.add(text, BorderLayout.WEST);
+		jpCenter.add(text, BorderLayout.CENTER);
         
-        currentKeyboard = keyboardMin;
+		currentKeyboard = keyboardMin;
         
-        add(jpCenter, BorderLayout.CENTER);
-        add(currentKeyboard, BorderLayout.SOUTH);
+		add(jpCenter, BorderLayout.CENTER);
+		add(currentKeyboard, BorderLayout.SOUTH);
         
-        //setBackground(new Color(0, 0, 0, 127));
-        //setUndecorated(true);
+		setUndecorated(true);
         
-        pack();
-        setLocationRelativeTo(null);
+		pack();
+		setLocationRelativeTo(null);
     }
 
 	@Override
