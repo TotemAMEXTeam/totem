@@ -27,6 +27,9 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	JButton fifth[];
     
 	JTextArea text;
+	
+	protected static boolean capsLocked;
+	protected static boolean swifted;
     
 	public Keyboard(JTextArea text, String[] firstRow, String[] secondRow, String[] thirdRow, String[] fourthRow, String[] fifthRow) {
 		super(new GridBagLayout());
@@ -36,6 +39,8 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 		this.fourthRow = fourthRow;
 		this.fifthRow = fifthRow;
 		this.text = text;
+		capsLocked = false;
+		swifted = false;
 		initWidgets();
 	}
 	

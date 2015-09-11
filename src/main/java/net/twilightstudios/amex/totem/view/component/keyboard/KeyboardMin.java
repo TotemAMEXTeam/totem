@@ -11,7 +11,7 @@ public class KeyboardMin extends Keyboard {
 	//Individual keyboard rows  
 	private static final String ROW_1[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "fill", "BackSpace"};
 	private static final String ROW_2[] = {"Tab", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p"};
-	private static final String ROW_3[] = {"Caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", "fill", "fill", "Enter"};
+	private static final String ROW_3[] = {"Caps On", "a", "s", "d", "f", "g", "h", "j", "k", "l", "fill", "fill", "Enter"};
 	private static final String ROW_4[] = {"Shift", "z", "x", "c", "v", "b", "n", "m", "blank", "Up"};
 	private static final String ROW_5[] = {"@/?", "blank", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "", "< Left", "Down", "Rigth >"};
 	
@@ -29,23 +29,29 @@ public class KeyboardMin extends Keyboard {
 		keyValue = (keyValue == null || keyValue.equals("")) ? " " : keyValue;
 		switch (keyValue) {
 		case "@/?":
-			System.out.println("He presionado la tecla " + keyValue);
+			swifted = false;
 			parent.switchToSpecials1Keyboard();
 			break;
-		case "Caps":
-			System.out.println("He presionado la tecla " + keyValue);
+		case "Caps On":
+			if (!swifted) {
+				capsLocked = true;
+			}
+			swifted = false;
 			parent.switchToMayusculesKeyboard();
 			break;
 			
 		case "Shift":
-			System.out.println("He presionado la tecla " + keyValue);
+			swifted = true;
 			parent.switchToMayusculesKeyboard();
 			break;
 		default:
 			text.setText(text.getText() + keyValue);
 			text.repaint();
 			text.revalidate();
-			System.out.println("He presionado la tecla " + keyValue);
+			if (swifted) {
+				swifted = false;
+				parent.switchToMayusculesKeyboard();
+			}
 		}
 		
 		

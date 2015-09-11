@@ -4,9 +4,9 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <bean id="navFrame" class="net.twilightstudios.amex.totem.view.panel.impl.NavFrameImpl">
+    <!-- bean id="navFrame" class="net.twilightstudios.amex.totem.view.panel.impl.NavFrameImpl">
     	<property name="keyboardPanel" ref="keyboardPanel" />
-    </bean>
+    </bean-->
     
     <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex"/>
     

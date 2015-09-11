@@ -58,7 +58,7 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
     }
 
 	@Override
-	public void swichtToMinusculesKeyboard() {
+	public void switchToMinusculesKeyboard() {
 		switchToOtherKeyboard(keyboardMin);
 		
 	}

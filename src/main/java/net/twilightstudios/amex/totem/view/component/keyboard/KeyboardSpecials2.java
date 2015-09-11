@@ -25,26 +25,28 @@ public class KeyboardSpecials2 extends Keyboard {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		swifted = false;
 		String keyValue = ((JButton)e.getSource()).getText();
 		keyValue = (keyValue == null || keyValue.equals("")) ? " " : keyValue;
 		switch (keyValue) {
 		case "ABC":
-			System.out.println("He presionado la tecla " + keyValue);
-			parent.swichtToMinusculesKeyboard();
+			if (capsLocked) {
+				parent.switchToMayusculesKeyboard();
+			} else {
+				parent.switchToMinusculesKeyboard();
+			}
 			break;
 		case "Caps":
-			System.out.println("He presionado la tecla " + keyValue);
 			break;
 			
 		case "2/2":
-			System.out.println("He presionado la tecla " + keyValue);
 			parent.switchToSpecials1Keyboard();
 			break;
 		default:
 			text.setText(text.getText() + keyValue);
 			text.repaint();
 			text.revalidate();
-			System.out.println("He presionado la tecla " + keyValue);
 		}
 		
 	}
