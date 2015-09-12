@@ -72,7 +72,7 @@ public class FlightInfoPanelUtils {
 	 */
 	public Box createBoardingInformation(String fligthNumber, String boardingGate) {
 		Box boardingInfo = Box.createHorizontalBox();
-		
+		boardingInfo.add(Box.createHorizontalGlue());
 		JLabel flightLabel = new JLabel(GenericConstants.FLIGHT_LABEL.toUpperCase());
 		flightLabel.setFont(FlightInfoPanelStyles.BOARDING_INFO_LABEL_FONT);
 		JLabel flightNumberLabel = new JLabel(fligthNumber);
@@ -94,7 +94,7 @@ public class FlightInfoPanelUtils {
 		boardingInfo.add(boardingLabel);
 		boardingInfo.add(Box.createHorizontalStrut(5));
 		boardingInfo.add(boardingGateNumberLabel);
-		
+		boardingInfo.add(Box.createHorizontalGlue());
 		return boardingInfo;
 	}
 	

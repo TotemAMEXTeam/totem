@@ -48,5 +48,34 @@
     	<property name="dateUtils" ref="dateUtils"/>
     </bean>
     
+    <!-- SELECTOR DE CATEGORÍA -->
+    <bean id="categorySelectorPanel" class="net.twilightstudios.amex.totem.view.component.panel.CategorySelectorPanel">
+    	<constructor-arg index="0" ref="frame"/>
+    	<property name="restaurantsButton" ref="restaurantsButton"/>
+    	<property name="artCultureButton" ref="artCultureButton"/>
+    	<property name="hotelsButton" ref="hotelsButton"/>
+    	<property name="mapButton" ref="mapButton"/>
+    </bean>
+    
+    <bean id="restaurantsButton" class="net.twilightstudios.amex.totem.view.component.button.RestaurantsButton">
+    	<constructor-arg index="0" ref="categorySelectorPanel"/>
+    	<property name="urlIcon" value="http://cdns2.freepik.com/foto-gratis/_318-53716.jpg" />
+    </bean>
+    
+    <bean id="artCultureButton" class="net.twilightstudios.amex.totem.view.component.button.ArtCultureButton">
+    	<constructor-arg index="0" ref="categorySelectorPanel"/>
+    	<property name="urlIcon" value="http://comps.canstockphoto.es/can-stock-photo_csp23872436.jpg" />
+    </bean>
+    
+    <bean id="hotelsButton" class="net.twilightstudios.amex.totem.view.component.button.HotelsButton">
+    	<constructor-arg index="0" ref="categorySelectorPanel"/>
+    	<property name="urlIcon" value="https://t2.ftcdn.net/jpg/00/49/95/03/240_F_49950377_UhNFZkmlu6I5Po5qaxMm91IAp672RXCm.jpg" />
+    </bean>
+    
+    <bean id="mapButton" class="net.twilightstudios.amex.totem.view.component.button.MapButton">
+    	<constructor-arg index="0" ref="categorySelectorPanel"/>
+    	<property name="urlIcon" value="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Google-Maps-icon.png" />
+    </bean>
+    
     
 </beans>

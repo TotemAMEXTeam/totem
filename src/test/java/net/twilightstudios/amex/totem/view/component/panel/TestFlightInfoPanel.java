@@ -1,4 +1,4 @@
-package net.twilightstudios.amex.totem.test.panel;
+package net.twilightstudios.amex.totem.view.component.panel;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -48,6 +48,7 @@ public class TestFlightInfoPanel {
 		panel.setPredictions(predictions);
 		panel.initPanel();
 		f.add(panel, BorderLayout.CENTER);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.pack();
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);

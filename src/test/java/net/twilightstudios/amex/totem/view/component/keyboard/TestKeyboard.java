@@ -1,5 +1,6 @@
-package net.twilightstudios.amex.totem.test.keyboard;
+package net.twilightstudios.amex.totem.view.component.keyboard;
 
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -21,6 +22,7 @@ public class TestKeyboard {
 		factory = new ClassPathXmlApplicationContext("testAppContext.xml");
 		KeyboardTotemAmex keyboard = (KeyboardTotemAmex) factory.getBean("keyboardPanel");
 		keyboard.initWidgets();
+		keyboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		keyboard.setVisible(true);
     }
 
