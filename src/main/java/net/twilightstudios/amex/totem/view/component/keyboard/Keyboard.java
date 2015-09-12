@@ -12,14 +12,14 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public abstract class Keyboard extends JPanel implements MouseListener {
 	
-	//Individual keyboard rows
+	//Filas individuales del teclado
 	private String firstRow[];
 	private String secondRow[];
 	private String thirdRow[];
 	private String fourthRow[];
 	private String fifthRow[];
 	
-	//Jbuttons corresponding to each individual rows 
+	//Jbuttons correspondientes a cada columna
 	JButton first[];
 	JButton second[];
 	JButton third[];
@@ -44,7 +44,9 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 		initWidgets();
 	}
 	
-	// Method to initialize frame component 
+	/**
+	 * Método para inicializar las filas de botones
+	 */
 	private void initWidgets() {
 
 		first = new JButton[firstRow.length];
@@ -61,6 +63,13 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 
 	}
 	
+	/**
+	 * Método para añadir los botones a cada una de las filas e incluirlas en el panel
+	 * @param parent
+	 * @param row
+	 * @param keys
+	 * @param buttons
+	 */
 	protected void addKeys(JPanel parent, int row, String[] keys, JButton[] buttons) {
 
 		GridBagConstraints gbc = new GridBagConstraints();

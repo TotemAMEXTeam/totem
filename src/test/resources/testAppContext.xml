@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <context:component-scan base-package="net"/>
+    <context:annotation-config />
+    
+    <bean id="dateUtils" class="net.twilightstudios.amex.totem.utils.DateUtils" />
+    
+    <bean id="frame" class="javax.swing.JFrame"/>
+    
+    <bean id="textArea" class="javax.swing.JTextArea" />
+    
+    <!-- BEANS PARA EL TECLADO -->
+    <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex">
+    	<property name="text" ref="textArea"/>
+    	<property name="keyboardMin" ref="keyboardMin"/>
+    	<property name="keyboardMay" ref="keyboardMay"/>
+    	<property name="keyboardSp1" ref="keyboardSp1"/>
+    	<property name="keyboardSp2" ref="keyboardSp2"/>
+    </bean>
+    
+    <bean id="keyboardMin" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardMin">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<constructor-arg index="1" ref="textArea"/>
+    </bean>
+    <bean id="keyboardMay" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardMay">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<constructor-arg index="1" ref="textArea"/>
+    </bean>
+    <bean id="keyboardSp1" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardSpecials1">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<constructor-arg index="1" ref="textArea"/>
+    </bean>
+    <bean id="keyboardSp2" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardSpecials2">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<constructor-arg index="1" ref="textArea"/>
+    </bean>
+    
+    <bean id="flightInfoPanel" class="net.twilightstudios.amex.totem.view.component.panel.FlightInfoPanel">
+    	<constructor-arg index="0" ref="frame"/>
+    	<property name="flightInfoPanelUtils" ref="flightInfoPanelUtils"/>
+    </bean>
+    
+    <bean id="flightInfoPanelUtils" class="net.twilightstudios.amex.totem.view.component.panel.utils.FlightInfoPanelUtils">
+    	<property name="dateUtils" ref="dateUtils"/>
+    </bean>
+    
+    
+</beans>

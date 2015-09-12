@@ -4,10 +4,12 @@
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <!-- bean id="navFrame" class="net.twilightstudios.amex.totem.view.panel.impl.NavFrameImpl">
-    	<property name="keyboardPanel" ref="keyboardPanel" />
-    </bean-->
+    <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex" />
     
-    <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex"/>
+    <bean id="flightInfoPanel" class="net.twilightstudios.amex.totem.view.componenet.panel.FlightInfoPanel">
+    	<constructor-arg index="0" ref="vistaDescarga"/>
+    	<property name="dateUtils" ref="dateUtils"/>
+    </bean>
     
+    <bean id="dateUtils" class="net.twilightstudios.amex.totem.utils.DateUtils" />
 </beans>

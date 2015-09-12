@@ -2,6 +2,7 @@ package net.twilightstudios.amex.totem.view.component.keyboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -12,31 +13,33 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 
-	JTextArea  text = new JTextArea();
+	private JTextArea text;
 	
-	Keyboard keyboardMin;
-	Keyboard keyboardMay;
-	Keyboard keyboardSp1;
-	Keyboard keyboardSp2;
+	private Keyboard keyboardMin;
+	private Keyboard keyboardMay;
+	private Keyboard keyboardSp1;
+	private Keyboard keyboardSp2;
 	
-	Keyboard currentKeyboard;
+	private Keyboard currentKeyboard;
 	
-	// No argument constructor to create frame
-	public KeyboardTotemAmex() {
-		keyboardMin = new KeyboardMin(this, text);
-    	keyboardMay = new KeyboardMay(this, text);
-    	keyboardSp1 = new KeyboardSpecials1(this, text);
-    	keyboardSp2 = new KeyboardSpecials2(this, text);
+	private Component parent;
+	
+	public KeyboardTotemAmex() {}
+	
+	public KeyboardTotemAmex(Component parent) {
+		super();
+		this.parent = parent;
     	
-    	initWidgets();
     }
 
-	// Method to initialize frame component 
-	private void initWidgets() {
+	/**
+	 * Método que inicializa el frame
+	 */
+	@Override
+	public void initWidgets() {
 
 		setLayout(new BorderLayout());
         
-		//Various panel for the layout 
 		JPanel jpCenter = new JPanel();
         
 		text.setPreferredSize(new Dimension(800,25));
@@ -84,6 +87,50 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 		add(currentKeyboard, BorderLayout.SOUTH);
 		this.repaint();
 		this.revalidate();
+	}
+	
+	public JTextArea getText() {
+		return text;
+	}
+
+	public void setText(JTextArea text) {
+		this.text = text;
+	}
+
+	public Keyboard getKeyboardMin() {
+		return keyboardMin;
+	}
+
+	public void setKeyboardMin(Keyboard keyboardMin) {
+		this.keyboardMin = keyboardMin;
+	}
+
+	public Keyboard getKeyboardMay() {
+		return keyboardMay;
+	}
+
+	public void setKeyboardMay(Keyboard keyboardMay) {
+		this.keyboardMay = keyboardMay;
+	}
+
+	public Keyboard getKeyboardSp1() {
+		return keyboardSp1;
+	}
+
+	public void setKeyboardSp1(Keyboard keyboardSp1) {
+		this.keyboardSp1 = keyboardSp1;
+	}
+
+	public Keyboard getKeyboardSp2() {
+		return keyboardSp2;
+	}
+
+	public void setKeyboardSp2(Keyboard keyboardSp2) {
+		this.keyboardSp2 = keyboardSp2;
+	}
+
+	public void setParent(Component parent) {
+		this.parent = parent;
 	}
 
 }

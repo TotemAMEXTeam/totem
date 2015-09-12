@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class KeyboardSpecials2 extends Keyboard {
 
-	//Individual keyboard rows  
+	//Filas individuales del teclado  
 	private static final String ROW_1[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "fill", "BackSpace"};
 	private static final String ROW_2[] = {"Tab", "#", "-", "_", "~", "!", "$", "&", "%", "(", ")"};
 	private static final String ROW_3[] = {"Caps", "*", "+", ",", ".", ";", "=", ":", "'", "\"", "fill", "fill", "Enter"};
@@ -17,7 +17,6 @@ public class KeyboardSpecials2 extends Keyboard {
 	
 	private KeyboardPanel parent;
 
-	// No argument constructor to create frame
 	public KeyboardSpecials2(KeyboardPanel parent, JTextArea text) {
 		super(text, ROW_1, ROW_2, ROW_3, ROW_4, ROW_5);
 		this.parent = parent;
@@ -49,5 +48,9 @@ public class KeyboardSpecials2 extends Keyboard {
 			text.revalidate();
 		}
 		
+	}
+
+	public void setParent(KeyboardPanel parent) {
+		this.parent = parent;
 	}
 }
