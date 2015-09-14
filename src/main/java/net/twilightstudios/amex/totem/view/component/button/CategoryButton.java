@@ -13,6 +13,9 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @SuppressWarnings("serial")
 public abstract class CategoryButton extends JButton implements ActionListener {
 	
@@ -22,7 +25,10 @@ public abstract class CategoryButton extends JButton implements ActionListener {
 	
 	private String urlIcon;
 	
+	private static Log log = LogFactory.getLog(CategoryButton.class);
+	
 	public CategoryButton() {}
+	
 	
 	public CategoryButton (Component parent) {
 		super();
@@ -54,10 +60,10 @@ public abstract class CategoryButton extends JButton implements ActionListener {
 			ImageIcon imageIcon = new ImageIcon(scaledImage);
 			return imageIcon;
 		} catch (MalformedURLException e) {
-			System.err.println("No se ha podido encontrar el archivo: " + path);
+			log.error("No se ha podido encontrar el archivo: " + path);
 			return null;
 		} catch (IOException e) {
-			System.err.println("Error de lectura o escritura");
+			log.error("Error de lectura o escritura");
 			return null;
 		}
 		

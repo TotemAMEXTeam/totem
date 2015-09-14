@@ -2,13 +2,14 @@ package net.twilightstudios.amex.totem.view.component.keyboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import net.twilightstudios.amex.totem.event.KeyboardListener;
 
 @SuppressWarnings("serial")
 public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
@@ -22,11 +23,11 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 	
 	private Keyboard currentKeyboard;
 	
-	private Component parent;
+	private KeyboardListener parent;
 	
 	public KeyboardTotemAmex() {}
 	
-	public KeyboardTotemAmex(Component parent) {
+	public KeyboardTotemAmex(KeyboardListener parent) {
 		super();
 		this.parent = parent;
     	
@@ -89,6 +90,16 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 		this.revalidate();
 	}
 	
+	@Override
+	public void enterKeyPressed() {
+		String text = currentKeyboard.getText().getText();
+		System.out.println("Se ha introducido el texto: " + text);
+		
+		// TODO: Enviar la información correspondiente al panel padre
+		parent.processKeyboardInput(text);
+		
+	}
+	
 	public JTextArea getText() {
 		return text;
 	}
@@ -129,7 +140,7 @@ public class KeyboardTotemAmex extends JFrame implements KeyboardPanel {
 		this.keyboardSp2 = keyboardSp2;
 	}
 
-	public void setParent(Component parent) {
+	public void setParent(KeyboardListener parent) {
 		this.parent = parent;
 	}
 

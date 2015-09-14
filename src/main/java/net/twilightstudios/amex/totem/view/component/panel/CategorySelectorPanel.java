@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import net.twilightstudios.amex.totem.view.component.button.CategoryButton;
-import net.twilightstudios.amex.totem.view.constants.GenericConstants;
 
 @SuppressWarnings("serial")
 public class CategorySelectorPanel extends SectionPanel {

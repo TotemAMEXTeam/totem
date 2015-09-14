@@ -42,10 +42,24 @@ public class KeyboardSpecials1 extends Keyboard {
 		case "1/2":
 			parent.switchToSpecials2Keyboard();
 			break;
+			
+		case "BackSpace":
+			String textValue = text.getText();
+			if (textValue.length() > 0) {
+				text.setText(textValue.substring(0, textValue.length()-1));
+			}
+			break;
+			
+		case "Tab":
+			text.setText(text.getText() +"\t");
+			break;
+			
+		case "Enter":
+			parent.enterKeyPressed();
+			break;
+			
 		default:
 			text.setText(text.getText() + keyValue);
-			text.repaint();
-			text.revalidate();
 		}
 		
 	}

@@ -36,16 +36,31 @@ public class KeyboardSpecials2 extends Keyboard {
 				parent.switchToMinusculesKeyboard();
 			}
 			break;
+			
 		case "Caps":
 			break;
 			
 		case "2/2":
 			parent.switchToSpecials1Keyboard();
 			break;
+			
+		case "BackSpace":
+			String textValue = text.getText();
+			if (textValue.length() > 0) {
+				text.setText(textValue.substring(0, textValue.length()-1));
+			}
+			break;
+			
+		case "Tab":
+			text.setText(text.getText() +"\t");
+			break;
+			
+		case "Enter":
+			parent.enterKeyPressed();
+			break;
+			
 		default:
 			text.setText(text.getText() + keyValue);
-			text.repaint();
-			text.revalidate();
 		}
 		
 	}

@@ -43,10 +43,28 @@ public class KeyboardMay extends Keyboard {
 			swifted = true;
 			parent.switchToMinusculesKeyboard();
 			break;
+			
+		case "BackSpace":
+			String textValue = text.getText();
+			if (textValue.length() > 0) {
+				text.setText(textValue.substring(0, textValue.length()-1));
+			}
+			if (swifted) {
+				swifted = false;
+				parent.switchToMinusculesKeyboard();
+			}
+			break;
+			
+		case "Tab":
+			text.setText(text.getText() +"\t");
+			break;
+			
+		case "Enter":
+			parent.enterKeyPressed();
+			break;
+
 		default:
 			text.setText(text.getText() + keyValue);
-			text.repaint();
-			text.revalidate();
 			if (swifted) {
 				swifted = false;
 				parent.switchToMinusculesKeyboard();

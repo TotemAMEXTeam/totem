@@ -26,7 +26,7 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	JButton fourth[];
 	JButton fifth[];
     
-	JTextArea text;
+	protected JTextArea text;
 	
 	protected static boolean capsLocked;
 	protected static boolean swifted;
@@ -112,5 +112,13 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
+
+	public JTextArea getText() {
+		return text;
+	}
+
+	public void setText(JTextArea text) {
+		this.text = text;
+	}
 
 }
