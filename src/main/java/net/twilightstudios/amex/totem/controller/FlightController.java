@@ -3,7 +3,8 @@ package net.twilightstudios.amex.totem.controller;
 import java.util.Date;
 import java.util.List;
 
-import net.twilightstudios.amex.common.flight.entity.FlightStatus;
+import net.twilightstudios.amex.flight.entity.FlightStatus;
+
 
 public class FlightController {
 	

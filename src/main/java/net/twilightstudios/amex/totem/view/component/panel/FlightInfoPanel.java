@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.swing.Box;
 
-import net.twilightstudios.amex.common.flight.entity.FlightStatus;
-import net.twilightstudios.amex.common.weather.entity.Forecast;
+import net.twilightstudios.amex.flight.entity.FlightStatus;
 import net.twilightstudios.amex.totem.view.component.panel.utils.FlightInfoPanelUtils;
+import net.twilightstudios.amex.weather.entity.Forecast;
 
 @SuppressWarnings("serial")
 public class FlightInfoPanel extends SectionPanel {
@@ -30,7 +30,7 @@ public class FlightInfoPanel extends SectionPanel {
 	@Override
 	public void initPanel() {
 		main = Box.createVerticalBox();
-		Box boardingInfo = flightInfoPanelUtils.createBoardingInformation(flightStatus.getFlightNumber(), flightStatus.getBoardingGate());
+		Box boardingInfo = flightInfoPanelUtils.createBoardingInformation(flightStatus.getFlight().getFlightNumber(), flightStatus.getBoardingGate());
 		main.add(boardingInfo);
 		
 		main.add(Box.createVerticalStrut(5));

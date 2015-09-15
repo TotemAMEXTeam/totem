@@ -12,15 +12,24 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import net.twilightstudios.amex.common.flight.entity.FlightDate;
-import net.twilightstudios.amex.common.flight.entity.FlightStatus;
-import net.twilightstudios.amex.common.flight.entity.Status;
-import net.twilightstudios.amex.common.weather.entity.Forecast;
-import net.twilightstudios.amex.common.weather.entity.Precipitation;
-import net.twilightstudios.amex.common.weather.entity.Summary;
-import net.twilightstudios.amex.common.weather.entity.Temperature;
-import net.twilightstudios.amex.common.weather.entity.Wind;
+
+
+
+
+
+
+
+
+
+import net.twilightstudios.amex.flight.entity.Flight;
+import net.twilightstudios.amex.flight.entity.FlightStatus;
+import net.twilightstudios.amex.flight.entity.Status;
 import net.twilightstudios.amex.totem.view.component.panel.FlightInfoPanel;
+import net.twilightstudios.amex.weather.entity.Forecast;
+import net.twilightstudios.amex.weather.entity.Precipitation;
+import net.twilightstudios.amex.weather.entity.Summary;
+import net.twilightstudios.amex.weather.entity.Temperature;
+import net.twilightstudios.amex.weather.entity.Wind;
 
 public class TestFlightInfoPanel {
 	
@@ -85,19 +94,17 @@ public class TestFlightInfoPanel {
 		FlightStatus flightStatus = new FlightStatus();
 		flightStatus.setBoardingGate("A32");
 		flightStatus.setCheckInCounter("322");
-		flightStatus.setDestiny("Roma");
+		Flight flight = new Flight();
+		flightStatus.setFlight(flight);
+		flightStatus.getFlight().setDestiny("Roma");
 		flightStatus.setDestinyTerminal("Terminal 1");
-		FlightDate estimated = new FlightDate();
-		estimated.setArrival(new Date());
-		estimated.setDeparture(new Date());
-		flightStatus.setEstimated(estimated);
-		flightStatus.setFlightNumber("IBE2457");
-		flightStatus.setOrigin("Madrid");
+		flightStatus.setEstimatedDeparture(new Date());
+		flightStatus.setEstimatedArrival(new Date());
+		flightStatus.getFlight().setFlightNumber("IBE2457");
+		flightStatus.getFlight().setOrigin("Madrid");
 		flightStatus.setOriginTerminal("Terminal 4");
-		FlightDate scheduled = new FlightDate();
-		scheduled.setArrival(new Date());
-		scheduled.setDeparture(new Date());
-		flightStatus.setScheduled(scheduled);
+		flightStatus.getFlight().setScheduledDeparture(new Date());
+		flightStatus.setScheduledArrival(new Date());
 		flightStatus.setStatus(Status.SCHEDULED);
 		return flightStatus;
 	}

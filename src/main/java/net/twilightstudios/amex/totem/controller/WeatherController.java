@@ -2,7 +2,9 @@ package net.twilightstudios.amex.totem.controller;
 
 import java.util.List;
 
-import net.twilightstudios.amex.common.weather.entity.Forecast;
+import net.twilightstudios.amex.weather.entity.Forecast;
+
+
 
 public class WeatherController {
 

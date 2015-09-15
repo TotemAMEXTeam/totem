@@ -13,11 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import net.twilightstudios.amex.common.flight.entity.FlightStatus;
-import net.twilightstudios.amex.common.weather.entity.Forecast;
+
+
+
+import net.twilightstudios.amex.flight.entity.FlightStatus;
 import net.twilightstudios.amex.totem.utils.DateUtils;
 import net.twilightstudios.amex.totem.view.constants.GenericConstants;
 import net.twilightstudios.amex.totem.view.constants.styles.FlightInfoPanelStyles;
+import net.twilightstudios.amex.weather.entity.Forecast;
 
 public class FlightInfoPanelUtils {
 
@@ -35,9 +38,9 @@ public class FlightInfoPanelUtils {
 	public Box createFlightDestinationInfo(FlightStatus flightStatus, Forecast forecast, List<Forecast> predictions) {
 		Box destinationInfo = Box.createHorizontalBox();
 		
-		String destiny = flightStatus.getDestiny();
-		Date departure = flightStatus.getScheduled().getDeparture();
-		Date arrival = flightStatus.getScheduled().getArrival();
+		String destiny = flightStatus.getFlight().getDestiny();
+		Date departure = flightStatus.getFlight().getScheduledDeparture();
+		Date arrival = flightStatus.getEstimatedArrival();
 		String departureDate = dateUtils.dateToddMMMM(departure);
 		Box destinationBox = createDestinationInfoBox(destiny, departureDate);
 		
