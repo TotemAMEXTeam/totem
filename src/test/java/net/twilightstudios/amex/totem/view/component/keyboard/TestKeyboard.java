@@ -7,7 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex;
+import net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightKeyboardPanel;
 
 public class TestKeyboard {
 	
@@ -20,7 +20,7 @@ public class TestKeyboard {
         }
 		
 		factory = new ClassPathXmlApplicationContext("testAppContext.xml");
-		KeyboardTotemAmex keyboard = (KeyboardTotemAmex) factory.getBean("keyboardPanel");
+		FlightKeyboardPanel keyboard = (FlightKeyboardPanel) factory.getBean("keyboardPanel");
 		keyboard.initWidgets();
 		keyboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		keyboard.setVisible(true);

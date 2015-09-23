@@ -2,8 +2,7 @@ package net.twilightstudios.amex.totem.view.component.button;
 
 import java.awt.Component;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,17 +12,21 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import net.twilightstudios.amex.totem.view.component.button.listener.CategoryButtonListener;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 @SuppressWarnings("serial")
-public abstract class CategoryButton extends JButton implements ActionListener {
+public abstract class CategoryButton extends JButton implements MouseListener {
 	
 	protected Component parent;
 	
 	protected String label;
 	
 	private String urlIcon;
+	
+	protected CategoryButtonListener listener;
 	
 	private static Log log = LogFactory.getLog(CategoryButton.class);
 	
@@ -69,9 +72,6 @@ public abstract class CategoryButton extends JButton implements ActionListener {
 		
 	}
 
-	@Override
-	public abstract void actionPerformed(ActionEvent arg0);
-
 	public String getLabel() {
 		return label;
 	}
@@ -90,6 +90,14 @@ public abstract class CategoryButton extends JButton implements ActionListener {
 
 	public void setUrlIcon(String urlIcon) {
 		this.urlIcon = urlIcon;
+	}
+
+	public CategoryButtonListener getListener() {
+		return listener;
+	}
+
+	public void setListener(CategoryButtonListener listener) {
+		this.listener = listener;
 	}
 
 }

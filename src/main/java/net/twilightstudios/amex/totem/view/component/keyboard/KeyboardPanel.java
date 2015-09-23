@@ -4,13 +4,12 @@ public interface KeyboardPanel {
 	
 	public void initWidgets();
 	
-	public void switchToMinusculesKeyboard();
+	public void switchToMinusculesKeyset();
 	
-	public void switchToMayusculesKeyboard();
+	public void switchToMayusculesKeyset();
 	
-	public void switchToSpecials1Keyboard();
+	public void switchToSpecials1Keyset();
 	
-	public void switchToSpecials2Keyboard();
+	public void switchToSpecials2Keyset();
 	
-	public void enterKeyPressed();
 }

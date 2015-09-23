@@ -1,4 +1,4 @@
-package net.twilightstudios.amex.totem.view.component.panel;
+package net.twilightstudios.amex.totem.view.component.panel.impl;
 
 import java.awt.Component;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.Box;
 
 import net.twilightstudios.amex.flight.entity.FlightStatus;
+import net.twilightstudios.amex.totem.view.component.panel.SectionPanel;
 import net.twilightstudios.amex.totem.view.component.panel.utils.FlightInfoPanelUtils;
 import net.twilightstudios.amex.weather.entity.Forecast;
 

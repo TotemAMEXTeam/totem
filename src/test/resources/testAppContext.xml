@@ -14,32 +14,40 @@
     <bean id="textArea" class="javax.swing.JTextArea" />
     
     <!-- BEANS PARA EL TECLADO -->
-    <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardTotemAmex">
-    	<property name="text" ref="textArea"/>
-    	<property name="keyboardMin" ref="keyboardMin"/>
-    	<property name="keyboardMay" ref="keyboardMay"/>
-    	<property name="keyboardSp1" ref="keyboardSp1"/>
-    	<property name="keyboardSp2" ref="keyboardSp2"/>
+    <bean id="keyboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightKeyboardPanel">
+    	<property name="textboardPanel" ref="flightTextboardPanel"/>
+    	<property name="keysetMin" ref="keysetMin"/>
+    	<property name="keysetMay" ref="keysetMay"/>
+    	<property name="keysetSp1" ref="keysetSp1"/>
+    	<property name="keysetSp2" ref="keysetSp2"/>
     </bean>
     
-    <bean id="keyboardMin" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardMin">
-    	<constructor-arg index="0" ref="keyboardPanel"/>
-    	<constructor-arg index="1" ref="textArea"/>
-    </bean>
-    <bean id="keyboardMay" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardMay">
-    	<constructor-arg index="0" ref="keyboardPanel"/>
-    	<constructor-arg index="1" ref="textArea"/>
-    </bean>
-    <bean id="keyboardSp1" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardSpecials1">
-    	<constructor-arg index="0" ref="keyboardPanel"/>
-    	<constructor-arg index="1" ref="textArea"/>
-    </bean>
-    <bean id="keyboardSp2" class="net.twilightstudios.amex.totem.view.component.keyboard.KeyboardSpecials2">
-    	<constructor-arg index="0" ref="keyboardPanel"/>
-    	<constructor-arg index="1" ref="textArea"/>
+    <bean id="flightTextboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightTextboardPanel">
+    	<property name="flightTextArea" ref="textArea"/>
     </bean>
     
-    <bean id="flightInfoPanel" class="net.twilightstudios.amex.totem.view.component.panel.FlightInfoPanel">
+    <bean id="keysetMin" class="net.twilightstudios.amex.totem.view.component.keyset.impl.KeysetMins">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<property name="listener" ref="keysetListener"/>
+    </bean>
+    <bean id="keysetMay" class="net.twilightstudios.amex.totem.view.component.keyset.impl.KeysetMays">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<property name="listener" ref="keysetListener"/>
+    </bean>
+    <bean id="keysetSp1" class="net.twilightstudios.amex.totem.view.component.keyset.impl.KeysetSpecials1">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<property name="listener" ref="keysetListener"/>
+    </bean>
+    <bean id="keysetSp2" class="net.twilightstudios.amex.totem.view.component.keyset.impl.KeysetSpecials2">
+    	<constructor-arg index="0" ref="keyboardPanel"/>
+    	<property name="listener" ref="keysetListener"/>
+    </bean>
+    
+    <bean id="keysetListener" class="net.twilightstudios.amex.totem.view.component.keyset.listener.impl.FlightKeysetListener">
+    	<property name="flightTextboardPanel" ref="flightTextboardPanel"/>
+    </bean>
+    
+    <bean id="flightInfoPanel" class="net.twilightstudios.amex.totem.view.component.panel.impl.FlightInfoPanel">
     	<constructor-arg index="0" ref="frame"/>
     	<property name="flightInfoPanelUtils" ref="flightInfoPanelUtils"/>
     </bean>
@@ -49,7 +57,7 @@
     </bean>
     
     <!-- SELECTOR DE CATEGORÍA -->
-    <bean id="categorySelectorPanel" class="net.twilightstudios.amex.totem.view.component.panel.CategorySelectorPanel">
+    <bean id="categorySelectorPanel" class="net.twilightstudios.amex.totem.view.component.panel.impl.CategorySelectorPanel">
     	<constructor-arg index="0" ref="frame"/>
     	<property name="restaurantsButton" ref="restaurantsButton"/>
     	<property name="artCultureButton" ref="artCultureButton"/>
@@ -57,22 +65,22 @@
     	<property name="mapButton" ref="mapButton"/>
     </bean>
     
-    <bean id="restaurantsButton" class="net.twilightstudios.amex.totem.view.component.button.RestaurantsButton">
+    <bean id="restaurantsButton" class="net.twilightstudios.amex.totem.view.component.button.impl.RestaurantsButton">
     	<constructor-arg index="0" ref="categorySelectorPanel"/>
     	<property name="urlIcon" value="http://cdns2.freepik.com/foto-gratis/_318-53716.jpg" />
     </bean>
     
-    <bean id="artCultureButton" class="net.twilightstudios.amex.totem.view.component.button.ArtCultureButton">
+    <bean id="artCultureButton" class="net.twilightstudios.amex.totem.view.component.button.impl.ArtCultureButton">
     	<constructor-arg index="0" ref="categorySelectorPanel"/>
     	<property name="urlIcon" value="http://comps.canstockphoto.es/can-stock-photo_csp23872436.jpg" />
     </bean>
     
-    <bean id="hotelsButton" class="net.twilightstudios.amex.totem.view.component.button.HotelsButton">
+    <bean id="hotelsButton" class="net.twilightstudios.amex.totem.view.component.button.impl.HotelsButton">
     	<constructor-arg index="0" ref="categorySelectorPanel"/>
     	<property name="urlIcon" value="https://t2.ftcdn.net/jpg/00/49/95/03/240_F_49950377_UhNFZkmlu6I5Po5qaxMm91IAp672RXCm.jpg" />
     </bean>
     
-    <bean id="mapButton" class="net.twilightstudios.amex.totem.view.component.button.MapButton">
+    <bean id="mapButton" class="net.twilightstudios.amex.totem.view.component.button.impl.MapButton">
     	<constructor-arg index="0" ref="categorySelectorPanel"/>
     	<property name="urlIcon" value="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Google-Maps-icon.png" />
     </bean>

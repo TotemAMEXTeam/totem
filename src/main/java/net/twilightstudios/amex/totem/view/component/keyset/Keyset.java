@@ -1,4 +1,4 @@
-package net.twilightstudios.amex.totem.view.component.keyboard;
+package net.twilightstudios.amex.totem.view.component.keyset;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,10 +7,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+
+import net.twilightstudios.amex.totem.view.component.keyset.listener.KeysetListener;
 
 @SuppressWarnings("serial")
-public abstract class Keyboard extends JPanel implements MouseListener {
+public abstract class Keyset extends JPanel implements MouseListener {
 	
 	//Filas individuales del teclado
 	private String firstRow[];
@@ -20,25 +21,24 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	private String fifthRow[];
 	
 	//Jbuttons correspondientes a cada columna
-	JButton first[];
-	JButton second[];
-	JButton third[];
-	JButton fourth[];
-	JButton fifth[];
+	private JButton first[];
+	private JButton second[];
+	private JButton third[];
+	private JButton fourth[];
+	private JButton fifth[];
     
-	protected JTextArea text;
-	
 	protected static boolean capsLocked;
 	protected static boolean swifted;
+	
+	protected KeysetListener listener;
     
-	public Keyboard(JTextArea text, String[] firstRow, String[] secondRow, String[] thirdRow, String[] fourthRow, String[] fifthRow) {
+	public Keyset(String[] firstRow, String[] secondRow, String[] thirdRow, String[] fourthRow, String[] fifthRow) {
 		super(new GridBagLayout());
 		this.firstRow = firstRow;
 		this.secondRow = secondRow;
 		this.thirdRow = thirdRow;
 		this.fourthRow = fourthRow;
 		this.fifthRow = fifthRow;
-		this.text = text;
 		capsLocked = false;
 		swifted = false;
 		initWidgets();
@@ -113,12 +113,12 @@ public abstract class Keyboard extends JPanel implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {}
 
-	public JTextArea getText() {
-		return text;
+	public KeysetListener getListener() {
+		return listener;
 	}
 
-	public void setText(JTextArea text) {
-		this.text = text;
+	public void setListener(KeysetListener listener) {
+		this.listener = listener;
 	}
 
 }

@@ -1,4 +1,4 @@
-package net.twilightstudios.amex.totem.view.component.panel;
+package net.twilightstudios.amex.totem.view.component.panel.impl;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import net.twilightstudios.amex.totem.view.component.button.CategoryButton;
+import net.twilightstudios.amex.totem.view.component.panel.SectionPanel;
 
 @SuppressWarnings("serial")
 public class CategorySelectorPanel extends SectionPanel {

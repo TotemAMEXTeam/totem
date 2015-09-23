@@ -21,10 +21,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 
+
 import net.twilightstudios.amex.flight.entity.Flight;
 import net.twilightstudios.amex.flight.entity.FlightStatus;
 import net.twilightstudios.amex.flight.entity.Status;
-import net.twilightstudios.amex.totem.view.component.panel.FlightInfoPanel;
+import net.twilightstudios.amex.totem.view.component.panel.impl.FlightInfoPanel;
 import net.twilightstudios.amex.weather.entity.Forecast;
 import net.twilightstudios.amex.weather.entity.Precipitation;
 import net.twilightstudios.amex.weather.entity.Summary;

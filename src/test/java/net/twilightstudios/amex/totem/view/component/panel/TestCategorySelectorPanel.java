@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import net.twilightstudios.amex.totem.view.component.panel.CategorySelectorPanel;
+import net.twilightstudios.amex.totem.view.component.panel.impl.CategorySelectorPanel;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

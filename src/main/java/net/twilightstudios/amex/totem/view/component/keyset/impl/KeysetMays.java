@@ -1,24 +1,26 @@
-package net.twilightstudios.amex.totem.view.component.keyboard;
+package net.twilightstudios.amex.totem.view.component.keyset.impl;
 
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JTextArea;
+
+import net.twilightstudios.amex.totem.view.component.keyboard.KeyboardPanel;
+import net.twilightstudios.amex.totem.view.component.keyset.Keyset;
 
 @SuppressWarnings("serial")
-public class KeyboardMay extends Keyboard {
+public class KeysetMays extends Keyset {
 
 	//Filas individuales del teclado  
-	private static final String ROW_1[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "fill", "BackSpace"};
+	private static final String ROW_1[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "fill", "Delete"};
 	private static final String ROW_2[] = {"Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"};
 	private static final String ROW_3[] = {"Caps Off", "A", "S", "D", "F", "G", "H", "J", "K", "L", "fill", "fill", "Enter"};
 	private static final String ROW_4[] = {"Shift", "Z", "X", "C", "V", "B", "N", "M", "blank", "Up"};
 	private static final String ROW_5[] = {"@/?", "blank", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "fill", "", "< Left", "Down", "Rigth >"};
 	
 	private KeyboardPanel parent;
-
-	public KeyboardMay(KeyboardPanel parent, JTextArea text) {
-		super(text, ROW_1, ROW_2, ROW_3, ROW_4, ROW_5);
+	
+	public KeysetMays(KeyboardPanel parent) {
+		super(ROW_1, ROW_2, ROW_3, ROW_4, ROW_5);
 		this.parent = parent;
 	}
 
@@ -29,46 +31,44 @@ public class KeyboardMay extends Keyboard {
 		switch (keyValue) {
 		case "@/?":
 			swifted = false;
-			parent.switchToSpecials1Keyboard();
+			parent.switchToSpecials1Keyset();
 			break;
 		case "Caps Off":
 			if (!swifted) {
 				capsLocked = false;
 			}
 			swifted = false;
-			parent.switchToMinusculesKeyboard();
+			parent.switchToMinusculesKeyset();
 			break;
 			
 		case "Shift":
 			swifted = true;
-			parent.switchToMinusculesKeyboard();
+			parent.switchToMinusculesKeyset();
 			break;
 			
-		case "BackSpace":
-			String textValue = text.getText();
-			if (textValue.length() > 0) {
-				text.setText(textValue.substring(0, textValue.length()-1));
-			}
+		case "Delete":
 			if (swifted) {
 				swifted = false;
-				parent.switchToMinusculesKeyboard();
+				parent.switchToMinusculesKeyset();
 			}
+			listener.deleteKeyPressed();
 			break;
 			
 		case "Tab":
-			text.setText(text.getText() +"\t");
+			listener.tabKeyPressed();
 			break;
 			
 		case "Enter":
-			parent.enterKeyPressed();
+			listener.enterKeyPressed();
 			break;
 
 		default:
-			text.setText(text.getText() + keyValue);
 			if (swifted) {
 				swifted = false;
-				parent.switchToMinusculesKeyboard();
+				parent.switchToMinusculesKeyset();
 			}
+			listener.genericKeyPressed(keyValue);
+			
 		}
 		
 	}
@@ -76,4 +76,5 @@ public class KeyboardMay extends Keyboard {
 	public void setParent(KeyboardPanel parent) {
 		this.parent = parent;
 	}
+
 }
