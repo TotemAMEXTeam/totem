@@ -2,8 +2,8 @@ package net.twilightstudios.amex.totem.view.component.keyset.listener.impl;
 
 import javax.swing.JTextArea;
 
-import net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightTextboardPanel;
 import net.twilightstudios.amex.totem.view.component.keyset.listener.KeysetListener;
+import net.twilightstudios.amex.totem.view.component.textboard.impl.FlightTextboardPanel;
 
 public class FlightKeysetListener implements KeysetListener {
 
@@ -18,7 +18,7 @@ public class FlightKeysetListener implements KeysetListener {
 		}
 	}
 
-	// Do nothing as the panel won't need an action on this key
+	// No hacer nada, ya que el panel no realizará ninguna acción al presional esta tecla
 	@Override
 	public void tabKeyPressed() {
 	}

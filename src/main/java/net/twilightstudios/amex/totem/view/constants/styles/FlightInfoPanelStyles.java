@@ -1,5 +1,6 @@
 package net.twilightstudios.amex.totem.view.constants.styles;
 
+import java.awt.Color;
 import java.awt.Font;
 
 /**
@@ -16,5 +17,9 @@ public class FlightInfoPanelStyles {
 	public static final Font DESTINATION_INFO_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	public static final Font DESTINATION_INFO_DATE_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
 	public static final Font DESTINATION_INFO_TEMPERATURE_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 30);
+	
+	public static final Color BACKGROUND_FLIGHTINFO = new Color(50, 50, 50);
+	
+	public static final Color BACKGROUND_BOARDINGINFO = new Color(255, 255, 255);
 
 }

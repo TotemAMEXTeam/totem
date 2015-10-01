@@ -1,10 +1,14 @@
 package net.twilightstudios.amex.totem.view.component.panel;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -22,10 +26,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 
+
 import net.twilightstudios.amex.flight.entity.Flight;
 import net.twilightstudios.amex.flight.entity.FlightStatus;
 import net.twilightstudios.amex.flight.entity.Status;
 import net.twilightstudios.amex.totem.view.component.panel.impl.FlightInfoPanel;
+import net.twilightstudios.amex.totem.view.component.panel.impl.MainPanel;
 import net.twilightstudios.amex.weather.entity.Forecast;
 import net.twilightstudios.amex.weather.entity.Precipitation;
 import net.twilightstudios.amex.weather.entity.Summary;
@@ -52,15 +58,33 @@ public class TestFlightInfoPanel {
 		factory = new ClassPathXmlApplicationContext("testAppContext.xml");
 		JFrame f = (JFrame) factory.getBean("frame");
 		f.setLayout(new BorderLayout());
-		FlightInfoPanel panel = factory.getBean(FlightInfoPanel.class);
-		panel.setFlightStatus(flightStatus);
-		panel.setForecast(forecast);
-		panel.setPredictions(predictions);
-		panel.initPanel();
-		f.add(panel, BorderLayout.CENTER);
+		
+		Image bgImage;
+		Image scaledImage = null;
+		try {
+			bgImage = ImageIO.read(new URL("http://www.psdgraphics.com/file/fresh-green-background.jpg"));
+			scaledImage = bgImage.getScaledInstance(1920, 1080, Image.SCALE_FAST);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		MainPanel p = new MainPanel(scaledImage);
+		
+		FlightInfoPanel fInfo = factory.getBean(FlightInfoPanel.class);
+		fInfo.setFlightStatus(flightStatus);
+		fInfo.setForecast(forecast);
+		fInfo.setPredictions(predictions);
+		fInfo.initPanel();
+		
+		p.add(fInfo);
+		//p.add(fInfo, BorderLayout.NORTH);
+		
+		f.add(p, BorderLayout.CENTER);
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.pack();
-		f.setLocationRelativeTo(null);
+		f.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		f.setVisible(true);
     }
 

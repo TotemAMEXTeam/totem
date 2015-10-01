@@ -22,7 +22,7 @@
     	<property name="keysetSp2" ref="keysetSp2"/>
     </bean>
     
-    <bean id="flightTextboardPanel" class="net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightTextboardPanel">
+    <bean id="flightTextboardPanel" class="net.twilightstudios.amex.totem.view.component.textboard.impl.FlightTextboardPanel">
     	<property name="flightTextArea" ref="textArea"/>
     </bean>
     
@@ -85,5 +85,6 @@
     	<property name="urlIcon" value="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Google-Maps-icon.png" />
     </bean>
     
-    
+    <!-- RELOJ DIGITAL -->
+    <bean id="digiClock" class="net.twilightstudios.amex.totem.view.component.panel.impl.DigitalClockPanel" />
 </beans>

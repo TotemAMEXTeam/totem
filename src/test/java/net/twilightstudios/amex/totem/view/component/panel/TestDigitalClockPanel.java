@@ -1,33 +1,36 @@
-package net.twilightstudios.amex.totem.view.component.keyboard;
+package net.twilightstudios.amex.totem.view.component.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import net.twilightstudios.amex.flight.entity.FlightStatus;
+import net.twilightstudios.amex.totem.view.component.panel.impl.DigitalClockPanel;
+import net.twilightstudios.amex.totem.view.component.panel.impl.FlightInfoPanel;
+import net.twilightstudios.amex.totem.view.component.panel.impl.MainPanel;
+import net.twilightstudios.amex.weather.entity.Forecast;
+
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import net.twilightstudios.amex.totem.view.component.keyboard.impl.FlightKeyboardPanel;
-import net.twilightstudios.amex.totem.view.component.panel.impl.MainPanel;
+public class TestDigitalClockPanel {
 
-public class TestKeyboard {
-	
 	private static BeanFactory factory;
-	
+
 	public static void main(String[] args) {
 		
 		try {
-            //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
-		
 		factory = new ClassPathXmlApplicationContext("testAppContext.xml");
 		JFrame f = (JFrame) factory.getBean("frame");
 		f.setLayout(new BorderLayout());
@@ -43,15 +46,18 @@ public class TestKeyboard {
 		}
 		
 		MainPanel p = new MainPanel(scaledImage);
-		FlightKeyboardPanel keyboard = (FlightKeyboardPanel) factory.getBean("keyboardPanel");
-		keyboard.initPanel();
-		//f.setUndecorated(true);
-		p.add(keyboard);
+		
+		DigitalClockPanel dgPanel = (DigitalClockPanel)factory.getBean("digiClock");
+		dgPanel.initPanel();
+		
+		p.add(dgPanel, BorderLayout.EAST);
+		p.add(dgPanel, BorderLayout.NORTH);
+		
 		f.add(p, BorderLayout.CENTER);
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.pack();
 		f.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		f.setVisible(true);
     }
-
 }

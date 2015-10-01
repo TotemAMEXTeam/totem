@@ -1,16 +1,15 @@
 package net.twilightstudios.amex.totem.view.component.keyboard.impl;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
+import javax.swing.Box;
 import javax.swing.JPanel;
 
 import net.twilightstudios.amex.totem.view.component.keyboard.KeyboardPanel;
-import net.twilightstudios.amex.totem.view.component.keyboard.TextboardPanel;
 import net.twilightstudios.amex.totem.view.component.keyset.Keyset;
+import net.twilightstudios.amex.totem.view.component.textboard.TextboardPanel;
+import net.twilightstudios.amex.totem.view.constants.styles.KeyboardPanelStyles;
 
 @SuppressWarnings("serial")
-public class FlightKeyboardPanel extends JFrame implements KeyboardPanel {
+public class FlightKeyboardPanel extends JPanel implements KeyboardPanel {
 
 	private TextboardPanel textboardPanel;
 	
@@ -21,37 +20,27 @@ public class FlightKeyboardPanel extends JFrame implements KeyboardPanel {
 	
 	private Keyset currentKeyset;
 	
+	private Box boxCenter;
+	
 	public FlightKeyboardPanel() {
 		super();
     }
 
 	/**
-	 * Método que inicializa el frame
+	 * Método que inicializa el panel
 	 */
 	@Override
-	public void initWidgets() {
-
-		setLayout(new BorderLayout());
-        
-		JPanel jpCenter = new JPanel();
-        
-		//textboardPanel.setPreferredSize(new Dimension(800,25));
-		//textboardPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
-        
-		jpCenter.setLayout( new BorderLayout());
+	public void initPanel() {
+		this.setBackground(KeyboardPanelStyles.BACKGROUND_COLOR);
+		
+		boxCenter = Box.createVerticalBox();
 		textboardPanel.initWidget();
-		jpCenter.add(textboardPanel, BorderLayout.WEST);
-		jpCenter.add(textboardPanel, BorderLayout.CENTER);
-        
 		currentKeyset = keysetMin;
-        
-		add(jpCenter, BorderLayout.CENTER);
-		add(currentKeyset, BorderLayout.SOUTH);
-        
-		setUndecorated(true);
-        
-		pack();
-		setLocationRelativeTo(null);
+		
+		boxCenter.add(textboardPanel);
+		boxCenter.add(currentKeyset);
+		
+		add(boxCenter);
     }
 
 	@Override
@@ -76,9 +65,9 @@ public class FlightKeyboardPanel extends JFrame implements KeyboardPanel {
 	}
 	
 	private void switchToOtherKeyset(Keyset keyset){
-		remove(currentKeyset);
+		boxCenter.remove(currentKeyset);
 		currentKeyset = keyset;
-		add(currentKeyset, BorderLayout.SOUTH);
+		boxCenter.add(currentKeyset);
 		this.repaint();
 		this.revalidate();
 	}

@@ -49,6 +49,7 @@ public abstract class Keyset extends JPanel implements MouseListener {
 	 */
 	private void initWidgets() {
 
+		this.setOpaque(false);
 		first = new JButton[firstRow.length];
 		second = new JButton[secondRow.length];
 		third = new JButton[thirdRow.length];

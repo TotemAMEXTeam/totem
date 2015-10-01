@@ -1,4 +1,4 @@
-package net.twilightstudios.amex.totem.view.component.keyboard;
+package net.twilightstudios.amex.totem.view.component.textboard;
 
 import java.awt.KeyboardFocusManager;
 

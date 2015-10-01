@@ -8,6 +8,7 @@ import javax.swing.Box;
 import net.twilightstudios.amex.flight.entity.FlightStatus;
 import net.twilightstudios.amex.totem.view.component.panel.SectionPanel;
 import net.twilightstudios.amex.totem.view.component.panel.utils.FlightInfoPanelUtils;
+import net.twilightstudios.amex.totem.view.constants.styles.FlightInfoPanelStyles;
 import net.twilightstudios.amex.weather.entity.Forecast;
 
 @SuppressWarnings("serial")
@@ -30,8 +31,14 @@ public class FlightInfoPanel extends SectionPanel {
 	 */
 	@Override
 	public void initPanel() {
+		
+		this.setBackground(FlightInfoPanelStyles.BACKGROUND_FLIGHTINFO);
 		main = Box.createVerticalBox();
 		Box boardingInfo = flightInfoPanelUtils.createBoardingInformation(flightStatus.getFlight().getFlightNumber(), flightStatus.getBoardingGate());
+		
+		boardingInfo.setOpaque(true);
+		boardingInfo.setBackground(FlightInfoPanelStyles.BACKGROUND_BOARDINGINFO);
+		boardingInfo.setSize(250,250);
 		main.add(boardingInfo);
 		
 		main.add(Box.createVerticalStrut(5));
@@ -39,7 +46,9 @@ public class FlightInfoPanel extends SectionPanel {
 		Box destinationInfo = flightInfoPanelUtils.createFlightDestinationInfo(flightStatus, forecast, predictions);
 		main.add(destinationInfo);
 		
+		this.add(Box.createVerticalGlue());
 		this.add(main);
+		this.add(Box.createVerticalGlue());
 	}
 	
 	public FlightStatus getFlightStatus() {

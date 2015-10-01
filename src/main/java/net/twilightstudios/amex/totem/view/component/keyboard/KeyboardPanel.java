@@ -2,7 +2,7 @@ package net.twilightstudios.amex.totem.view.component.keyboard;
 
 public interface KeyboardPanel {
 	
-	public void initWidgets();
+	public void initPanel();
 	
 	public void switchToMinusculesKeyset();
 	
